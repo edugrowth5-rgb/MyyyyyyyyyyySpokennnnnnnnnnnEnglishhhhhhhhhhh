@@ -1,10 +1,11 @@
 const CACHE_NAME = 'vanicraft-cache-v1';
 const urlsToCache = [
   'index.html',
+  'Vstyle.css',
   'Vapp.js',
   'Vdata.js',
   'Vmanifest.json',
-  'Vicon.png'
+  'vc.png'
 ];
 
 // Install Service Worker
