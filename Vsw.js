@@ -1,46 +1,28 @@
-const CACHE_NAME = 'vanicraft-v1';
-const ASSETS_TO_CACHE = [
-  'Vindex.html',
-  'Vstyle.css',
+const CACHE_NAME = 'vanicraft-cache-v1';
+const urlsToCache = [
+  'index.html',
   'Vapp.js',
-  'Vmanifest.json'
+  'Vdata.js',
+  'Vmanifest.json',
+  'Vicon.png'
 ];
 
-// Install Event - Caching all core assets
-self.addEventListener('install', (event) => {
+// Install Service Worker
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log('Opened cache and caching app shell');
-      return cache.addAll(ASSETS_TO_CACHE);
-    })
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        return cache.addAll(urlsToCache);
+      })
   );
-  self.skipWaiting();
 });
 
-// Activate Event - Clean up old caches if any
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cache) => {
-          if (cache !== CACHE_NAME) {
-            console.log('Deleting old cache:', cache);
-            return caches.delete(cache);
-          }
-        })
-      );
-    })
-  );
-  self.clients.claim();
-});
-
-// Fetch Event - Serve from cache when offline, fallback to network
-self.addEventListener('fetch', (event) => {
+// Fetch Cached Files when Offline
+self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    }).catch(() => {
-      // Fallback or offline page can be handled here if needed
-    })
+    caches.match(event.request)
+      .then(response => {
+        return response || fetch(event.request);
+      })
   );
 });
