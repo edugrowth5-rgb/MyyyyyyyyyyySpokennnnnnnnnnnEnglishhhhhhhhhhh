@@ -1,9 +1,21 @@
 {
   "name": "VaniCraft Spoken English",
   "short_name": "VaniCraft",
-  "start_url": "Vindex.html",
+  "description": "Learn English conversation dialogues and practice translations interactively.",
+  "start_index": "index.html",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#4f46e5",
-  "icons": []
+  "background_color": "#0f172a",
+  "theme_color": "#1e293b",
+  "icons": [
+    {
+      "src": "Vicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "Vicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
