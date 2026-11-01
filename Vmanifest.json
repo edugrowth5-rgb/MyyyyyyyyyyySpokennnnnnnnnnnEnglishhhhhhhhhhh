@@ -1,0 +1,9 @@
+{
+  "name": "VaniCraft Spoken English",
+  "short_name": "VaniCraft",
+  "start_url": "Vindex.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4f46e5",
+  "icons": []
+}
