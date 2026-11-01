@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VaniCraft - Spoken English PWA</title>
+    <link rel="stylesheet" href="Vstyle.css">
+    <link rel="icon" type="image/png" href="vc.png">
+    <link rel="manifest" href="Vmanifest.json">
+    <!-- Theme Color for Mobile Browsers -->
+<meta name="theme-color" content="#1e293b">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <!-- Top Header -->
+    <header class="app-header">
+        <div class="header-title-box">
+            <button onclick="toggleSidebar()" class="toggle-sidebar-btn" title="Toggle Sidebar">☰</button>
+            <span class="header-icon">🎙️</span>
+            <div>
+                <h1>VANI CRAFT</h1>
+                <p>Colorful Spoken English Studio</p>
+            </div>
+        </div>
+        <div class="header-badge">
+            ✨ Success Zone Edition
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <div id="app-container" class="app-container">
+
+        <!-- Left Sidebar: Topics List -->
+        <aside id="app-sidebar" class="app-sidebar">
+            <div class="sidebar-header">
+                <h2>🔥 TOPICS</h2>
+                <span>PWA</span>
+            </div>
+            <div id="sidebar-topics-list" class="sidebar-list">
+                <!-- Topics loaded via JS -->
+            </div>
+        </aside>
+
+        <!-- Right Main Panel -->
+        <main class="app-main">
+            <div id="main-content-area" class="content-scroll-area">
+                <!-- Default content or dynamic content -->
+            </div>
+
+            <!-- Bottom Audio Control Bar -->
+            <div id="audio-control-bar" class="audio-bar hidden">
+                <div class="speed-box">
+                    <span>Speed:</span>
+                    <button onclick="setSpeed(0.75)" id="speed-075" class="speed-btn">0.75x</button>
+                    <button onclick="setSpeed(1)" id="speed-1" class="speed-btn active">1x</button>
+                    <button onclick="setSpeed(1.25)" id="speed-125" class="speed-btn">1.25x</button>
+                </div>
+
+                <div class="player-buttons">
+                    <button onclick="playPrevious()" class="ctrl-btn" title="Previous">⏮️</button>
+                    <button id="play-pause-btn" onclick="togglePlayPause()" class="play-btn">▶️ Play Audio</button>
+                    <button onclick="playNext()" class="ctrl-btn" title="Next">⏭️</button>
+                </div>
+            </div>
+        </main>
+
+    </div>
+<script>
+    if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('Vsw.js')
+      .then(reg => console.log('Service Worker Registered!', reg.scope))
+      .catch(err => console.log('Service Worker Registration Failed:', err));
+  });
+}
+</script>
+    <!-- Script loaded at the bottom to ensure DOM is ready -->
+    <script src="Vdata.js"></script>
+    <script src="Vapp.js"></script>
+</body>
+</html>
